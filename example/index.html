@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <style>
+      * {
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script
+      async
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1.6.2/dist/es-module-shims.min.js"
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.137.0/build/three.module.js",
+          "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.149.0/examples/jsm/",
+          "./setup": "./setup.js",
+          "three-touch-controller": "../dist/esm/index.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from "three";
+      import { setupScene } from "./setup";
+      import { TouchController } from "three-touch-controller";
+
+      function createWorldObjects(scene) {
+        const cube = new THREE.Mesh(
+          new THREE.BoxGeometry(1, 1, 1),
+          new THREE.MeshNormalMaterial()
+        );
+        cube.position.set(0, 0.5, -5);
+        cube.rotation.y = 1;
+        cube.name = "cube";
+        scene.add(cube);
+      }
+      const main = () => {
+        let ctx;
+        ctx = setupScene((dt) => {
+          touchController?.tick(dt);
+        });
+        ctx.cameraContainer.position.set(0, 1.6, 0);
+        const person = new THREE.Object3D();
+        person.name = "person";
+        person.add(ctx.cameraContainer);
+        person.position.z = 2;
+        ctx.scene.add(person);
+
+        createWorldObjects(ctx.scene);
+        const touchController = new TouchController(person);
+        touchController.enabled = true;
+      };
+      main();
+    </script>
+  </head>
+  <body></body>
+</html>
