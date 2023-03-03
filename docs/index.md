@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [three-touch-controller](./three-touch-controller.md) | Joystick for touch operation. |
+|  [@verseengine/three-touch-controller](./three-touch-controller.md) | Joystick for touch operation. |
 
