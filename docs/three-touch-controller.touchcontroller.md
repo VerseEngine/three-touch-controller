@@ -41,6 +41,8 @@ renderer.setAnimationLoop(() => {
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [enabled](./three-touch-controller.touchcontroller.enabled.md) |  | boolean | When set to false, Will not respond to controls. Default is true. |
+|  [moveSpeed](./three-touch-controller.touchcontroller.movespeed.md) |  | number | Movement speed. Default is 2. |
+|  [rotationSpeed](./three-touch-controller.touchcontroller.rotationspeed.md) |  | number | Rotation speed. Default is (50 \* Math.PI) / 180. |
 
 ## Methods
 

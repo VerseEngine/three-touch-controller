@@ -57,6 +57,14 @@ renderer.setAnimationLoop(() => {
 * ```
  */
 export class TouchController {
+  /**
+   * Movement speed. Default is 2.
+   */
+  moveSpeed = 0;
+  /**
+   * Rotation speed. Default is (50 * Math.PI) / 180.
+   */
+  rotationSpeed = 0;
   private _centerX = 0;
   private _centerY = 0;
   private _isTouch = false;
@@ -68,8 +76,6 @@ export class TouchController {
   private _target: THREE.Object3D;
   private _joystick: JoyStick;
   private _enabled = true;
-  private _moveSpeed = 0;
-  private _rotationSpeed = 0;
   private _intervalSec = 0;
   private _sec = 0;
 
@@ -88,8 +94,8 @@ export class TouchController {
     this._onTouchMove = this._onTouchMove.bind(this);
     this._onMouseStart = this._onMouseStart.bind(this);
     this._onMouseMove = this._onMouseMove.bind(this);
-    this._moveSpeed = options?.moveSpeed || DEFAULT_MOVE_SPEED;
-    this._rotationSpeed = options?.rotationSpeed || DEFAULT_ROTATE_SPEED;
+    this.moveSpeed = options?.moveSpeed || DEFAULT_MOVE_SPEED;
+    this.rotationSpeed = options?.rotationSpeed || DEFAULT_ROTATE_SPEED;
     this._intervalSec =
       options?.intervalSec || options?.intervalSec === 0
         ? options.intervalSec
@@ -191,8 +197,8 @@ export class TouchController {
       this._joystick.container.style.display = "block";
     }
 
-    const moveSpeed = this._moveSpeed;
-    const rotationSpeed = this._rotationSpeed;
+    const moveSpeed = this.moveSpeed;
+    const rotationSpeed = this.rotationSpeed;
 
     const power = this._power;
     if (power < 0.1) {
