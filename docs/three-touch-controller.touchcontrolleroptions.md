@@ -16,5 +16,6 @@ export interface TouchControllerOptions
 |  --- | --- | --- | --- |
 |  [intervalSec?](./three-touch-controller.touchcontrolleroptions.intervalsec.md) |  | number | _(Optional)_ Processing frequency of tick(). Default is 1 / 60 (60fps). |
 |  [moveSpeed?](./three-touch-controller.touchcontrolleroptions.movespeed.md) |  | number | _(Optional)_ Movement speed. Default is 2. |
+|  [moveTo?](./three-touch-controller.touchcontrolleroptions.moveto.md) |  | (x: number, y: number, z: number) =&gt; void | _(Optional)_ Custom move function. |
 |  [rotationSpeed?](./three-touch-controller.touchcontrolleroptions.rotationspeed.md) |  | number | _(Optional)_ Rotation speed. Default is (50 \* Math.PI) / 180. |
 

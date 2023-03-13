@@ -35,6 +35,10 @@ export interface TouchControllerOptions {
    * Processing frequency of tick(). Default is 1 / 60 (60fps).
    */
   intervalSec?: number;
+  /**
+   * Custom move function.
+   */
+  moveTo?: (x: number, y: number, z: number) => void;
 }
 
 /**
@@ -78,6 +82,7 @@ export class TouchController {
   private _enabled = true;
   private _intervalSec = 0;
   private _sec = 0;
+  private _moveTo?: (x: number, y: number, z: number) => void;
 
   /**
    * @param target - Object to move.
@@ -100,6 +105,7 @@ export class TouchController {
       options?.intervalSec || options?.intervalSec === 0
         ? options.intervalSec
         : DEFAULT_INTERVAL_SEC;
+    this._moveTo = options?.moveTo;
 
     if (this._enabled) {
       this._addEventListeners();
@@ -232,9 +238,15 @@ export class TouchController {
       v.set(0, 0, -1);
       v.applyQuaternion(this._target.quaternion);
       const vp = (diffLimit - diffF) / diffLimit;
-      this._target.position.x += moveSpeed * v.x * dt * power * vp;
-      this._target.position.y += moveSpeed * v.y * dt * power * vp;
-      this._target.position.z += moveSpeed * v.z * dt * power * vp;
+
+      const x = this._target.position.x + moveSpeed * v.x * dt * power * vp;
+      const y = this._target.position.y + moveSpeed * v.y * dt * power * vp;
+      const z = this._target.position.z + moveSpeed * v.z * dt * power * vp;
+      if (this._moveTo) {
+        this._moveTo(x, y, z);
+      } else {
+        this._target.position.set(x, y, z);
+      }
     }
   }
   private _onTouchStart(e: TouchEvent) {
