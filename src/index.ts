@@ -362,6 +362,8 @@ function createJoyStick(): JoyStick {
   container.style.bottom = "0";
   container.style.zIndex = "2";
   container.style.display = "none";
+  container.style.userSelect = "none";
+  container.style.webkitUserSelect = "none";
 
   const outer = document.createElement("div");
   outer.style.position = "absolute";
@@ -370,6 +372,8 @@ function createJoyStick(): JoyStick {
   outer.style.borderRadius = "50%";
   outer.style.border = "solid 5px #fff";
   outer.style.transform = "translate(-50%, -50%)";
+  outer.style.userSelect = "none";
+  outer.style.webkitUserSelect = "none";
   container.appendChild(outer);
 
   const inner = document.createElement("div");
@@ -379,6 +383,8 @@ function createJoyStick(): JoyStick {
   inner.style.borderRadius = "50%";
   inner.style.backgroundColor = "#fff";
   inner.style.transform = "translate(-50%, -50%)";
+  inner.style.userSelect = "none";
+  inner.style.webkitUserSelect = "none";
   container.appendChild(inner);
 
   return {
