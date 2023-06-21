@@ -20,7 +20,7 @@ npm install @verseengine/three-touch-controller
   {
     "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.137.0/build/three.module.js",
-      "three-touch-controller": "https://cdn.jsdelivr.net/npm/@verseengine/three-touch-controller@1.0.0/dist/esm/index.js"
+      "three-touch-controller": "https://cdn.jsdelivr.net/npm/@verseengine/three-touch-controller@1.0.1/dist/esm/index.js"
     }
   }
 </script>
