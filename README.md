@@ -4,6 +4,27 @@
 
  ![preview](https://user-images.githubusercontent.com/20784450/211957791-de29676f-9d82-42d4-be44-2300944a8383.gif)
 
+## Installation
+### npm
+```bash
+npm install @verseengine/three-touch-controller
+```
+
+### CDN (ES Mobules)
+```html
+<script
+      async
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1.6.2/dist/es-module-shims.min.js"
+    ></script>
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.137.0/build/three.module.js",
+      "three-touch-controller": "https://cdn.jsdelivr.net/npm/@verseengine/three-touch-controller@1.0.0/dist/esm/index.js"
+    }
+  }
+</script>
+```
 
 ## Example
 ```bash
