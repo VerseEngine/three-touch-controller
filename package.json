@@ -1,6 +1,6 @@
 {
   "name": "@verseengine/three-touch-controller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Joystick for touch operation",
   "author": "Appland, Inc",
   "license": "MIT",

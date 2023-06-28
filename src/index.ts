@@ -222,13 +222,14 @@ export class TouchController {
           rotationSpeed * dt * ((diffLimit - diffL) / diffLimit) * power;
       } else if (angle >= 0) {
         if (angle < angleBack) {
-          this._target.rotation.y =
-            (this._target.rotation.y - rotationSpeed * dt * power) %
-            (Math.PI * 2);
+          const diffBR = angleBack - angle;
+          this._target.rotation.y -=
+            ((rotationSpeed * dt * Math.min(diffLimit, diffBR)) / diffLimit) *
+            power;
         } else {
-          this._target.rotation.y =
-            (this._target.rotation.y + rotationSpeed * dt * power) %
-            (Math.PI * 2);
+          const diffBL = angle - angleBack;
+          this._target.rotation.y +=
+            rotationSpeed * dt * Math.min(diffLimit, diffBL) * power;
         }
       }
     }
@@ -246,6 +247,23 @@ export class TouchController {
         this._moveTo(x, y, z);
       } else {
         this._target.position.set(x, y, z);
+      }
+    } else {
+      const diffB = diff(angle, angleBack);
+      if (diffLimit > diffB) {
+        const v = this._dVelocity;
+        v.set(0, 0, -1);
+        v.applyQuaternion(this._target.quaternion);
+        const vp = (diffLimit - diffB) / diffLimit;
+
+        const x = this._target.position.x - moveSpeed * v.x * dt * power * vp;
+        const y = this._target.position.y - moveSpeed * v.y * dt * power * vp;
+        const z = this._target.position.z - moveSpeed * v.z * dt * power * vp;
+        if (this._moveTo) {
+          this._moveTo(x, y, z);
+        } else {
+          this._target.position.set(x, y, z);
+        }
       }
     }
   }
