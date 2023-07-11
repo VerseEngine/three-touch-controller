@@ -1,4 +1,4 @@
-# three-touch-controller
+# three-touch-controller &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/VerseEngine/three-touch-controller/blob/main/LICENSE)  [![npm version](https://img.shields.io/npm/v/@verseengine%2Fthree-touch-controller.svg?style=flat)](https://www.npmjs.com/package/@verseengine%2Fthree-touch-controller)  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/VerseEngine/three-touch-controller/pulls)
  
  Joystick for touch operation.
 
